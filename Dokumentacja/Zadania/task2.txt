@@ -1,0 +1,19 @@
+wykonawca: Marianna
+status: w trakcie realizacji
+
+Zadanie polega na utworzeniu klasy Network odpowiadającej pojedyńczej sieci (lub podsieci).
+Klasa początkowo posiada dokładnie dwie informacje (przekazywane z klasy IP_Calculator):
+1. adres sieci w postaci dziesiętnej (np. 192.168.1.0)
+2. skrócony zapis maski sieci (np. 24)
+
+Po otrzymaniu tych informacji automatycznie wywołane zostają metody klasy Network,
+które obliczają i zapisują w postaci atrybutów następujące informacje:
+1. adres sieci w postaci binarnej (np. 11000000.10101000.00000001.00000000)
+2. zapis maski w postaci dziesiętnej (np. 255.255.255.0)
+3. zapis maski w postaci binarnej (np. 11111111.11111111.11111111.00000000)
+4. adres broadcast w postaci dziesiętnej (np. 192.168.1.255)
+5. adres broadcast w postaci binarnej (np. 11000000.10101000.00000001.11111111)
+6. ilość możliwych do zaadresowania w tej sieci hostów (np. 254)
+7. adres pierwszego hosta w tej sieci (np. 192.168.1.1)
+8. adres ostatniego hosta w tej sieci (np. 192.168.1.254)
+
