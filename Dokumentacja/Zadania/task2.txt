@@ -1,5 +1,5 @@
 wykonawca: Marianna
-status: w trakcie realizacji
+status: wykonane
 
 Zadanie polega na utworzeniu klasy Network odpowiadającej pojedyńczej sieci (lub podsieci).
 Klasa początkowo posiada dokładnie dwie informacje (przekazywane z klasy IP_Calculator):
