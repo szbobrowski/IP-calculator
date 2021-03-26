@@ -2,6 +2,10 @@ package makaANDsimonovsky.com;
 
 public class MainSimon {
     public static void main(String[] args) {
-        System.out.println("Workspace for Szymon");
+        IP_Calculator calculator = new IP_Calculator();
+        calculator.takeAddressInput();
+        calculator.takeMaskInput();
+        calculator.takeNumberOfSubnets();
+        calculator.takeNumberOfHosts();
     }
 }

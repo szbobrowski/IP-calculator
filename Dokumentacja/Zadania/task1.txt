@@ -1,5 +1,5 @@
 wykonawca: Szymon
-status: w trakcie realizacji
+status: wykonane
 
 1. Utworzenie projektu i umieszczenie go w rezpozytorium na githubie.
 2. Utworzenie klasy IP_Calculator, której zadaniem jest wymiana informacji
