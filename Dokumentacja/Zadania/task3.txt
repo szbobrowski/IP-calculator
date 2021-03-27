@@ -1,0 +1,25 @@
+wykonawca: Marianna
+status: w trakcie realizacji
+
+Klasa IP_Calculator gwarantuje pewne zabezpieczenia co do wprowadzonych przez użytkwnika danych.
+Tematem tego zadania jest wprowadzenie dalszych zabezpieczeń, tym razem w klasie Network.
+Zabezpieczenia dotyczą:
+
+1. Sprawdzenie czy dana pula adresowa jest poprawna względem podanej maski. Warunkiem jest to
+aby w podanym adresie jedynki nie występowały na bitach dalszych niż jest to określone przez maskę.
+Np. jeśli maska wynosi 13 to jedynki w adresie sieci mogą występować tylko w pierwszych trzynastu bitach
+adresu. Przykładowo:
+111.233.0.0/13 -> niepoprawny adres sieci, jedynka występuje na 14 bicie adresu
+111.232.0.0/13 -> poprawny adres sieci, jedynki nie występują nigdzie poza pierwszymi 13
+bitami adresu
+
+2. Sprawdzenia czy wskazana pula adresów jest w stanie pomieścić daną ilość podsieci i znajdujących
+się w nich hostów. Metoda sprawdzająca powinna jako argument przyjmować listę typu 
+ArrayList<Integer>, w której znajdują się w kolejności malejącej liczby hostów w poszczególnych
+sieciach np. [319, 81, 44, 13]. Liczbę adresów zajmowanych przez daną podsieć należy określi według
+wzoru 2^(32-maska), gdzie maska jest minimalną maską przy której dana liczba hostów może zostać
+zaadresowana. Np. w przypadku 319 hostów należy przyjąć, że ta podsieć zajmie 512 adresów (adres
+sieci, 510 adresów hostów i adres broadcast). Następnie należy zsumować liczbę adresów zajmowanych
+przez każdą z poszczególnych podsieci i przyrównać ją do liczby wszystkich dostępnych adresów. 
+Jeśli liczba dostępnych adresów jest mniejsza od tych potrzebnych do prawidłowej adresacji program 
+powinien zwrócić odpowiedni komunikat lub rzucić wyjątek.

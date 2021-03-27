@@ -1,0 +1,59 @@
+wykonawca: Marianna
+status: w trakcie realizacji
+
+Należy utworzyć klasę Optimizer posiadającą dwie metody: optimize oraz incrementAddress, a także
+jeden arybut; listę subnetworksList, w której przechowywane są pary (adres sieci, maska).
+Metoda incrementAddress przymuje jako paramter adres sieci w postaci dziesiętnej np. (192.168.1.0).
+Zadaniem metody incrementAddress jest zwiększenie otrzymanego adresu o jeden w górę. Przykłady
+192.168.1.0 -> 192.168.1.1
+132.182.12.19 -> 132.182.12.20
+12.19.1.255 -> 12.19.2.0
+34.166.255.255 -> 34.167.0.0
+
+Metoda optimize realizuje algorytm pozwalający na optymalną adresację dostępnej przestrzeni
+adresowej. Jako parametry przyjmuje adres stanowiący dostępną pulę adresową np. 129.233.1.0
+oraz odpowiadającą temu adresowi maskę np. 24, a także listę ArrayList(Integer) zawierającą
+liczby hostów w kolejnych podsieciach (w kolejności malejącej) np. [9834, 3412, 86, 11].
+
+Dla optymalnej adresacji wykorzystywany jest następujący algorytm:
+
+1. Adresem pierwszej podsieci (zawierającej najwięcej hostów) jest adres dostępnej puli adresowej.
+Jednakże maska zostaje skrócona do minimalnej takiej, która jest w stanie pomieścić wskazaną ilość
+hostów.
+
+2. Para (adres sieci, maska) dla pierwszej podsieci zostaje wpisana do atrybutu klasy Optimizer;
+subnetworksList.
+
+3. Znając adres i maskę pierwszej podsieci znajdź adres broadcast tej podsieci (np. przy
+wykorzystaniu metody zaimplementowanej w klasie Network).
+
+4. Przekaż znaleziony wcześniej adres broadcast do metody incrementAddress. W wyniku otrzymujesz
+adres sieci dla kolejnej podsieci. Dobierz maskę tak aby pomieścić zadaną ilość hostów.
+
+5. Para (adres sieci, maska) dla podsieci ustalonej w punkcie czwartym zostaje wpisana do atrybutu klasy subnetworksList.
+
+6. Znając adres i maskę poprzedniej podsieci znajdź adres broadcast tej podsieci (np. przy
+wykorzystaniu metody zaimplementowanej w klasie Network).
+
+7. Powtarzaj punkty 4,5,6 dopóki nie wykorzystarz wysztkich wartości znajdujących się w liście
+zawierającej liczby hostów w podsieciach.
+
+
+PRZYKŁADOWY PRZEBIEG ALGORYTMU
+
+dostępna pula adresowa: 112.232.0.0/13
+liczba hostów w każdej podsieci: [9121, 3455, 1745, 917, 512, 181, 71, 11]
+
+I podsieć- adres: 112.232.0.0/18 | broadcast: 112.232.63.255
+II podsieć- adres: 112.232.64.0/20 | broadcast: 112.232.79.255
+III podsieć- adres: 112.232.80.0/21 | broadcast: 112.232.87.255
+IV podsieć- adres: 112.232.88.0/22 | broadcast: 112.232.91.255
+V podsieć- adres: 112.232.92.0/22 | broadcast: 112.232.95.255
+VI podsieć- adres: 112.232.96.0/24 | broadcast: 112.232.96.255
+VII podsieć- adres: 112.232.97.0/25 | broadcast: 112.232.96.127
+VIII podsieć- adres: 112.232.97.128/28 | broadcast: 112.232.97.143
+-----------------------------------------------------------------------------------
+
+UWAGA: Podczas testowania klasy Optimizer polecam porównywać uzyskiwane wyniki z tymi w:
+1. aplikacji dostępnej na smartphona: "VLSM/CIDR Subnet Calculator"
+2. https://ccnaanswers.com/vlsm-calculator/subnet-calculator.htm
