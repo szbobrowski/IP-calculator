@@ -30,8 +30,8 @@ wykorzystaniu metody zaimplementowanej w klasie Network).
 4. Przekaż znaleziony wcześniej adres broadcast do metody incrementAddress. W wyniku otrzymujesz
 adres sieci dla kolejnej podsieci. Dobierz maskę tak aby pomieścić zadaną ilość hostów.
 
-5. Para (adres sieci, maska) dla podsieci ustalonej w punkcie czwartym zostaje wpisana do 
-atrybutu klasy subnetworksList.
+5. Para (adres sieci, maska) dla podsieci ustalonej w punkcie czwartym zostaje 
+wpisana do atrybutu klasy subnetworksList.
 
 6. Znając adres i maskę poprzedniej podsieci znajdź adres broadcast tej podsieci (np. przy
 wykorzystaniu metody zaimplementowanej w klasie Network).
