@@ -1,0 +1,12 @@
+wykonawca: Szymon
+status: wykonane
+
+1. Należy utworzyć startowe GUI projektu. Użytkownik powinien mieć możliwość wyboru jednej z
+dwóch opcji:
+* konwersja adresu IP
+* optymalna adresacja podsieci z przydzielonej puli adresowej
+
+2. Należy utowrzyć GUI, które pokazuje się po wybraniu opcji optymalna adresacja.
+GUI to posiada pola potrzebne do wprowadzenia adresu, podania maski, dodawania kolejnych
+podsieci oraz przycisk Submit, za pomocą kórego dane są aktualizowane w klasie IP_Calculator, a
+stamtdąd przekzywane do klas backendowych odpowiedzialnych za wykonywanie obliczeń na adresach.
