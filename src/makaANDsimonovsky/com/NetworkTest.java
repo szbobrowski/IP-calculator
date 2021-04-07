@@ -1,7 +1,10 @@
 package makaANDsimonovsky.com;
 
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class NetworkTest {
 
@@ -40,5 +43,21 @@ public class NetworkTest {
     @Test
     public void checkingFindingLastHostAddressDecimal() {
         assertEquals("192.168.191.254", network.lastHostAddress);
+    }
+
+    @Test
+    public void checkingIfNetworkIsCorrect() {
+        assertTrue(network.ifNetworkIsCorrect());
+    }
+
+    @Test
+    public void checkingIfNumberOfHostsOkay() {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1000);
+        list.add(3000);
+        list.add(4000);
+        list.add(6000);
+        list.add(9000);
+        assertFalse(network.ifNumberOfHostsOkay(list));
     }
 }

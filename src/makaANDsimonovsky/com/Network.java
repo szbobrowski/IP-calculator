@@ -1,5 +1,6 @@
 package makaANDsimonovsky.com;
 
+import java.util.ArrayList;
 import static java.lang.Math.*;
 
 public class Network {
@@ -20,14 +21,16 @@ public class Network {
     public Network(String networkAddressDecimal, Integer networkMaskNumeral) {
         this.networkAddressDecimal = networkAddressDecimal;
         this.networkMaskNumeral = networkMaskNumeral;
-        setNetworkAddressBinary();
-        setNetworkMaskBinary();
-        setNetworkMaskDecimal();
-        setNumberOfAvailableHosts();
-        setBroadcastAddressBinary();
-        setBroadcastAddressDecimal();
-        setFirstHostAddress();
-        setLastHostAddress();
+        if(ifNetworkIsCorrect()){
+            setNetworkAddressBinary();
+            setNetworkMaskBinary();
+            setNetworkMaskDecimal();
+            setNumberOfAvailableHosts();
+            setBroadcastAddressBinary();
+            setBroadcastAddressDecimal();
+            setFirstHostAddress();
+            setLastHostAddress();
+        }
     }
 
     //Setters
@@ -82,7 +85,7 @@ public class Network {
         String[] arrayFirstHostAddress;
         arrayFirstHostAddress = networkAddressDecimal.split("\\.");
         int lastOctet = Integer.parseInt(arrayFirstHostAddress[3]);
-        lastOctet += 1;
+        lastOctet++;
         arrayFirstHostAddress[3] = Integer.toString(lastOctet);
         this.firstHostAddress = String.join(".", arrayFirstHostAddress);
     }
@@ -91,9 +94,51 @@ public class Network {
         String[] arrayLastHostAddress;
         arrayLastHostAddress = broadcastAddressDecimal.split("\\.");
         int lastOctet = Integer.parseInt(arrayLastHostAddress[3]);
-        lastOctet -= 1;
+        lastOctet--;
         arrayLastHostAddress[3] = Integer.toString(lastOctet);
         this.lastHostAddress = String.join(".", arrayLastHostAddress);
+    }
+
+    //Getters
+
+    public String getNetworkAddressDecimal() {
+        return networkAddressDecimal;
+    }
+
+    public String getNetworkAddressBinary() {
+        return networkAddressBinary;
+    }
+
+    public Integer getNetworkMaskNumeral() {
+        return networkMaskNumeral;
+    }
+
+    public String getNetworkMaskDecimal() {
+        return networkMaskDecimal;
+    }
+
+    public String getNetworkMaskBinary() {
+        return networkMaskBinary;
+    }
+
+    public double getNumberOfAvailableHosts() {
+        return numberOfAvailableHosts;
+    }
+
+    public String getBroadcastAddressDecimal() {
+        return broadcastAddressDecimal;
+    }
+
+    public String getBroadcastAddressBinary() {
+        return broadcastAddressBinary;
+    }
+
+    public String getFirstHostAddress() {
+        return firstHostAddress;
+    }
+
+    public String getLastHostAddress() {
+        return lastHostAddress;
     }
 
     //Methods
@@ -125,7 +170,7 @@ public class Network {
         return addressBinary;
     }
 
-    public String convertAddressToDecimal(String addressBinary){
+    protected String convertAddressToDecimal(String addressBinary){
         String[] arrayAddressBinary;
         arrayAddressBinary = addressBinary.split("\\.");
         String addressDecimal;
@@ -143,5 +188,39 @@ public class Network {
         }
         addressDecimal = String.join(".", arrayAddressDecimal);
         return addressDecimal;
+    }
+
+    protected boolean ifNetworkIsCorrect(){
+        String addressBinary = convertAddressToBinary(networkAddressDecimal);
+        String networkAddressBinaryWithoutDots = addressBinary.replace(".","");
+        String[] arrayOfAddress = networkAddressBinaryWithoutDots.split("");
+        for(int i = 0; i < 32-networkMaskNumeral; i++){
+            int element = Integer.parseInt(arrayOfAddress[31 - i]);
+            if(element != 0){
+                System.out.println("This is not a network address!");
+                return false;
+            }
+        }
+        System.out.println("This is a network address!");
+        return true;
+    }
+
+    protected boolean ifNumberOfHostsOkay(ArrayList<Integer> list){
+        double numberOfNeededHosts = 0.0;
+        for (Integer element : list) {
+            int j = 0;
+            while(pow(2, j) - 2 < element){
+                j++;
+            }
+            numberOfNeededHosts += (pow(2,j) - 2);
+        }
+        if(numberOfNeededHosts > numberOfAvailableHosts){
+            System.out.println("numberOfNeededHosts > numberOfAvailableHosts - IT'S BAD!");
+            return false;
+
+        }else{
+            System.out.println("numberOfNeededHosts < numberOfAvailableHosts - IT'S OKAY!");
+            return true;
+        }
     }
 }
