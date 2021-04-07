@@ -1,5 +1,5 @@
 wykonawca: Marianna
-status: w trakcie realizacji
+status: wykonane
 
 Klasa IP_Calculator gwarantuje pewne zabezpieczenia co do wprowadzonych przez użytkwnika danych.
 Tematem tego zadania jest wprowadzenie dalszych zabezpieczeń, tym razem w klasie Network.
