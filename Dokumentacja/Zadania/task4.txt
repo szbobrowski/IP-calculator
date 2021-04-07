@@ -1,5 +1,5 @@
 wykonawca: Marianna
-status: w trakcie realizacji
+status: wykonane
 
 Należy utworzyć klasę Optimizer posiadającą dwie metody: optimize oraz incrementAddress, a także
 jeden arybut; listę subnetworksList, w której przechowywane są pary (adres sieci, maska).
