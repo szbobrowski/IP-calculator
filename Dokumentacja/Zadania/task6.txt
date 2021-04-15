@@ -1,0 +1,5 @@
+wykonawca: Szymon
+status: wykonane
+
+Utworzyć graficzny interfejs obsługujący opcję konwersji adresu IP oraz
+zwracjący rezultaty optymalnej adresacji podsieci.
