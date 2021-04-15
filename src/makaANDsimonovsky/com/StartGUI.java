@@ -27,6 +27,17 @@ public class StartGUI {
                 frame.setLocationRelativeTo(null);
             }
         });
+
+        convertingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("ConvertingGUI");
+                frame.setContentPane(new ConvertingGUI().convertingPanel);
+                frame.pack();
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
+            }
+        });
     }
 
     public static void main(String[] args) {

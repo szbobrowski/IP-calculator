@@ -27,6 +27,7 @@ public class IP_Calculator {
 
     protected static void setMask(String maskText) {
         mask = Integer.parseInt(maskText);
+        Collections.sort(numberOfHosts, Collections.reverseOrder());
     }
 
     protected static void takeNumberOfHosts(int num) {

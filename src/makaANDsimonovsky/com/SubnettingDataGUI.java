@@ -87,6 +87,13 @@ public class SubnettingDataGUI extends JFrame {
                     System.out.println("Data correct. Perform submit..");
                     IP_Calculator.setMask(maskText);
                     IP_Calculator.setAddress(address);
+
+                    JFrame frame = new JFrame("SubnettingResultGUI");
+                    frame.setContentPane(new SubnettingResultGUI().subnettingResultPanel);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+
                 } else {
                     System.out.println("Some data not correct. Cannot perform submit.");
                 }

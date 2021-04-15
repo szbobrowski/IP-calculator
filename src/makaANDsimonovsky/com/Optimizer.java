@@ -7,7 +7,6 @@ public class Optimizer {
 
     protected ArrayList<Network> subnetworkList = new ArrayList<>();
 
-    //ta metoda jest wykorzystywana w klasie Network przy pierwszym hoście
     protected String incrementAddress(String networkAddressDecimal){
         String[] arrayNetworkAddressString;
         arrayNetworkAddressString = networkAddressDecimal.split("\\.");
