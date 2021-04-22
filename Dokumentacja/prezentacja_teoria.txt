@@ -1,0 +1,43 @@
+PLAN CZĘŚCI TEORETYCZNEJ PREZENTACJI (30-45 minut):
+
+1. Zaprezentowanie części funkcjonalnej aplikacji Kalkulator IP
+2. Kilka słów o ogólnej teorii testowania
+3. Techniki testowania (technika białej/czarnej szkrzynki)
+4. TDD- Test Driven Development
+*5. Po 2/3 wybrane ciekawe zagadnienia związane z testowaniem 
+na przemian Szymon i Marianna (opcjonalny punkt)
+6. Poziomy wykonywania testów
+7. Typy testów
+8. Wysłanie przez użytkowników odpowiedzi do pierwszego 
+zadania (test wiedzy)
+
+
+ZAKRES PREZENTACJI DLA MARIANNY:
+
+1. Zaprezetowanie części funkcjonalnej aplikacji Kalkulator IP
+3. Techniki testowania (technika białej/czarnej szkrzynki)
+5. Podrozdziały, z których można wybrać zagadnienia:
+*1.2. Miara jakości oprogramowania
+*1.4. Replikacja błędów
+*1.6. Symulatory aplikacji oraz generatory danych
+*1.8. Kontrola wersji oprogramowania
+*1.10. Testowanie obsługi wyjątków w kodzie
+*1.12. Presja czasu
+*1.14. Testowanie w oknie czasu
+*1.16. Testowanie w cyklu życia oprogramowania
+6. Poziomy wykonywania testów
+
+
+ZAKRES PREZENTACJI DLA SZYMONA:
+
+2. Kilka słów o ogólnej teorii testowania
+4. TDD- Test Driven Development
+5. Podrozdziały, z których można wybrać zagadnienia:
+*1.3. Środowisko testowe i produkcyjne
+*1.5. U mnie błąd nie występuje
+*1.7. Dokumentowanie testów
+*1.9. Obsługa zgłoszeń
+*1.11. Narzędzia wsparcia pracy testera
+*1.13. Profil profesjonalnego testera
+*1.15. Jak wygląda realizacja projektu w praktyce?
+7. Typy testów
