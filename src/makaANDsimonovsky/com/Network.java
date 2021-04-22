@@ -50,7 +50,7 @@ public class Network {
     }
 
     public void setNetworkMaskDecimal() {
-        this.networkMaskDecimal = convertAddressToDecimal(networkAddressBinary);
+        this.networkMaskDecimal = convertAddressToDecimal(networkMaskBinary);
     }
 
     public void setNumberOfAvailableHosts(){
