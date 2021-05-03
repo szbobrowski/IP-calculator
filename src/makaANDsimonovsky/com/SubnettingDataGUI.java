@@ -1,7 +1,6 @@
 package makaANDsimonovsky.com;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +22,8 @@ public class SubnettingDataGUI extends JFrame {
     private JLabel rightFulfillLabel;
     private JLabel bottomFulfillLabel;
     private JButton submitButton;
+    private JButton clearSubnetsButton;
+    private JButton cancelLastButton;
 
     public static boolean isInteger(String strNum) {
         if (strNum == null) {
@@ -50,7 +51,7 @@ public class SubnettingDataGUI extends JFrame {
 
                 if (flag) {
                     IP_Calculator.takeNumberOfHosts(Integer.parseInt(numberText));
-                    subnetTextPane.setText(IP_Calculator.numberOfHosts.toString());
+                    subnetTextPane.setText(IP_Calculator.numbersOfHosts.toString());
                     hostsTextField.setText("");
                 } else {
                     System.out.println("Something went wrong!");
@@ -81,7 +82,7 @@ public class SubnettingDataGUI extends JFrame {
                 else if (Integer.parseInt(maskText) < 1) flag = false;
                 else if (Integer.parseInt(maskText) > 31) flag = false;
 
-                if(IP_Calculator.numberOfHosts.isEmpty()) flag = false;
+                if(IP_Calculator.numbersOfHosts.isEmpty()) flag = false;
 
                 if (flag) {
                     System.out.println("Data correct. Perform submit..");
@@ -96,6 +97,29 @@ public class SubnettingDataGUI extends JFrame {
 
                 } else {
                     System.out.println("Some data not correct. Cannot perform submit.");
+                }
+            }
+        });
+
+        clearSubnetsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IP_Calculator.numbersOfHosts.clear();
+                subnetTextPane.setText("");
+            }
+        });
+
+        cancelLastButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(IP_Calculator.numbersOfHosts.isEmpty()) {
+                    subnetTextPane.setText("");
+                } else {
+                    int index = IP_Calculator.numbersOfHosts.size() - 1;
+                    IP_Calculator.numbersOfHosts.remove(index);
+                    subnetTextPane.setText(IP_Calculator.numbersOfHosts.toString());
+
+                    if(IP_Calculator.numbersOfHosts.isEmpty()) subnetTextPane.setText("");
                 }
             }
         });

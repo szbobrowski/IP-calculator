@@ -1,6 +1,7 @@
 package makaANDsimonovsky.com;
 
 import javax.swing.*;
+import java.util.*;
 
 public class SubnettingResultGUI {
     public JPanel subnettingResultPanel;
@@ -15,6 +16,7 @@ public class SubnettingResultGUI {
     private JLabel topFulfillLabel;
     private JLabel rightFulfillLabel;
 
+    static ArrayList<Integer> numbersOfHostsSorted = new ArrayList<Integer>();
 
     public static boolean isInteger(String strNum) {
         if (strNum == null) {
@@ -31,18 +33,21 @@ public class SubnettingResultGUI {
     SubnettingResultGUI() {
         addressField.setText(IP_Calculator.address);
         maskField.setText(Integer.toString(IP_Calculator.mask));
-        subnetsField.setText(Integer.toString(IP_Calculator.numberOfHosts.size()));
+        subnetsField.setText(Integer.toString(IP_Calculator.numbersOfHosts.size()));
 
         Network network = new Network(IP_Calculator.address, IP_Calculator.mask);
-        System.out.println(IP_Calculator.numberOfHosts.toString());
+        System.out.println(IP_Calculator.numbersOfHosts.toString());
 
         if(!network.ifNetworkIsCorrect()) {
             subnetsArea.setText("This is not a valid network address.");
-        } else if (!network.ifNumberOfHostsOkay(IP_Calculator.numberOfHosts)) {
+        } else if (!network.ifNumberOfHostsOkay(IP_Calculator.numbersOfHosts)) {
             subnetsArea.setText("Not enough available address for such addressing scheme.");
         } else {
             Optimizer optimizer = new Optimizer();
-            optimizer.optimize(IP_Calculator.address, IP_Calculator.mask, IP_Calculator.numberOfHosts);
+            numbersOfHostsSorted.clear();
+            numbersOfHostsSorted.addAll(IP_Calculator.numbersOfHosts);
+            Collections.sort(numbersOfHostsSorted, Collections.reverseOrder());
+            optimizer.optimize(IP_Calculator.address, IP_Calculator.mask, numbersOfHostsSorted);
 
             int i = 1;
             for(Network object : optimizer.subnetworkList) {
