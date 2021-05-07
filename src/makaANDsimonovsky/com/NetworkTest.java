@@ -1,49 +1,71 @@
 package makaANDsimonovsky.com;
 
-
 import org.junit.jupiter.api.*;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NetworkTest {
 
-    private final Network network = new Network("192.168.128.0", 18);
+    private Network network;
+
+    @BeforeEach
+    public void init(){
+        this.network = new Network("192.168.128.0", 18);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        this.network = null;
+    }
 
     @Test
     public void checkingConvertAddressToBinary() {
-        assertEquals("11000000.10101000.10000000.00000000", network.networkAddressBinary);
+        assertEquals("11000000.10101000.10000000.00000000", network.convertAddressToBinary("192.168.128.0"));
     }
 
     @Test
     public void checkingConvertAddressToDecimal() {
-        assertEquals("192.168.191.255", network.broadcastAddressDecimal);
+        assertEquals("192.168.128.0", network.convertAddressToDecimal("11000000.10101000.10000000.00000000"));
+    }
+
+    @Test
+    public void checkingConvertNetworkAddressToBinary() {
+        assertEquals("11000000.10101000.10000000.00000000", network.getNetworkAddressBinary());
+    }
+
+    @Test
+    public void checkingConvertMaskToBinary() {
+        assertEquals("11111111.11111111.11000000.00000000", network.getNetworkMaskBinary());
     }
 
     @Test
     public void checkingConvertMaskToDecimal() {
-        assertEquals("11111111.11111111.11000000.00000000", network.networkMaskBinary);
+        assertEquals("255.255.192.0", network.getNetworkMaskDecimal());
     }
 
     @Test
     public void checkingCalculateNumberOfAvailableHosts() {
-        assertEquals(16382, network.numberOfAvailableHosts);
+        assertEquals(16382, network.getNumberOfAvailableHosts());
     }
 
     @Test
     public void checkingFindingBroadcastAddressBinary() {
-        assertEquals("11000000.10101000.10111111.11111111", network.broadcastAddressBinary);
+        assertEquals("11000000.10101000.10111111.11111111", network.getBroadcastAddressBinary());
+    }
+
+    @Test
+    public void checkingConvertBroadcastAddressToDecimal() {
+        assertEquals("192.168.191.255", network.getBroadcastAddressDecimal());
     }
 
     @Test
     public void checkingFindingFirstHostAddressDecimal() {
-        assertEquals("192.168.128.1", network.firstHostAddress);
+        assertEquals("192.168.128.1", network.getFirstHostAddress());
     }
 
     @Test
     public void checkingFindingLastHostAddressDecimal() {
-        assertEquals("192.168.191.254", network.lastHostAddress);
+        assertEquals("192.168.191.254", network.getLastHostAddress());
     }
 
     @Test
@@ -51,14 +73,30 @@ public class NetworkTest {
         assertTrue(network.ifNetworkIsCorrect());
     }
 
-    @Test
-    public void checkingIfNumberOfHostsOkay() {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(1000);
-        list.add(3000);
-        list.add(4000);
-        list.add(6000);
-        list.add(9000);
-        assertFalse(network.ifNumberOfHostsOkay(list));
+    @Nested
+    class TestOfCheckingIfNumberOfHostsOkay {
+
+        ArrayList<Integer> list;
+
+        @BeforeEach
+        public void init() {
+            list = new ArrayList<>();
+            list.add(1000);
+            list.add(1);
+            list.add(80);
+            list.add(3600);
+            list.add(9000);
+        }
+
+        @AfterEach
+        public void tearDown() {
+            this.list = null;
+        }
+
+        @Test
+        public void checkingIfNumberOfHostsOkay() {
+            assertFalse(network.ifNumberOfHostsOkay(list));
+        }
+
     }
 }

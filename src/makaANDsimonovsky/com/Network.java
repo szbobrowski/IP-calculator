@@ -43,10 +43,7 @@ public class Network {
         StringBuilder maskBinaryBuild = new StringBuilder();
         maskBinaryBuild.append("1".repeat(Math.max(0, networkMaskNumeral)));
         maskBinaryBuild.append("0".repeat(Math.max(0, 32 - networkMaskNumeral)));
-        maskBinaryBuild.insert(8, ".");
-        maskBinaryBuild.insert(17, ".");
-        maskBinaryBuild.insert(26, ".");
-        this.networkMaskBinary = maskBinaryBuild.toString();
+        this.networkMaskBinary = addingDots(maskBinaryBuild).toString();
     }
 
     public void setNetworkMaskDecimal() {
@@ -71,10 +68,7 @@ public class Network {
                 broadcastAddressBinaryBuild.append("1");
             }
         }
-        broadcastAddressBinaryBuild.insert(8, ".");
-        broadcastAddressBinaryBuild.insert(17, ".");
-        broadcastAddressBinaryBuild.insert(26, ".");
-        this.broadcastAddressBinary = broadcastAddressBinaryBuild.toString();
+        this.broadcastAddressBinary = addingDots(broadcastAddressBinaryBuild).toString();
     }
 
     public void setBroadcastAddressDecimal() {
@@ -148,9 +142,11 @@ public class Network {
         arrayAddressDecimal = addressDecimal.split("\\.");
         String addressBinary;
         String [] arrayAddressBinary = new String[4];
+
         for(int i = 0; i < 4; i++){
             int element = Integer.parseInt(arrayAddressDecimal[i]);
             StringBuilder newElement = new StringBuilder();
+
             while(element > 0) {
                 if (element % 2 == 0) {
                     newElement.insert(0, "0");
@@ -160,12 +156,14 @@ public class Network {
                 }
                 element = element/2;
             }
+
             int lengthOfElement = newElement.length();
             for(int j = 0; j < (8 - lengthOfElement); j++){
                 newElement.insert(0, "0");
             }
             arrayAddressBinary[i] = newElement.toString();
         }
+
         addressBinary = String.join(".", arrayAddressBinary);
         return addressBinary;
     }
@@ -175,10 +173,12 @@ public class Network {
         arrayAddressBinary = addressBinary.split("\\.");
         String addressDecimal;
         String [] arrayAddressDecimal = new String[4];
+
         for(int i = 0; i < 4; i++){
             String element = arrayAddressBinary[i];
             String[] arrayOfElement = element.split("");
             int newElement = 0;
+
             for(int j = 0; j < element.length(); j++){
                 int argument = Integer.parseInt(arrayOfElement[element.length()-1-j]);
                 int power = (int) pow(2,j);
@@ -186,6 +186,7 @@ public class Network {
             }
             arrayAddressDecimal[i] = Integer.toString(newElement);
         }
+
         addressDecimal = String.join(".", arrayAddressDecimal);
         return addressDecimal;
     }
@@ -194,6 +195,7 @@ public class Network {
         String addressBinary = convertAddressToBinary(networkAddressDecimal);
         String networkAddressBinaryWithoutDots = addressBinary.replace(".","");
         String[] arrayOfAddress = networkAddressBinaryWithoutDots.split("");
+
         for(int i = 0; i < 32-networkMaskNumeral; i++){
             int element = Integer.parseInt(arrayOfAddress[31 - i]);
             if(element != 0){
@@ -201,11 +203,29 @@ public class Network {
                 return false;
             }
         }
+
         System.out.println("This is a network address!");
         return true;
     }
 
     protected boolean ifNumberOfHostsOkay(ArrayList<Integer> list){
+        if(calculatingNumberOfNeededHosts(list) > numberOfAvailableHosts){
+            System.out.println("numberOfNeededHosts > numberOfAvailableHosts - IT'S BAD!");
+            return false;
+        }else{
+            System.out.println("numberOfNeededHosts < numberOfAvailableHosts - IT'S OKAY!");
+            return true;
+        }
+    }
+
+    protected StringBuilder addingDots(StringBuilder address){
+        address.insert(8, ".");
+        address.insert(17, ".");
+        address.insert(26, ".");
+        return address;
+    }
+
+    protected double calculatingNumberOfNeededHosts(ArrayList<Integer> list){
         double numberOfNeededHosts = 0.0;
         for (Integer element : list) {
             int j = 0;
@@ -214,13 +234,6 @@ public class Network {
             }
             numberOfNeededHosts += (pow(2,j) - 2);
         }
-        if(numberOfNeededHosts > numberOfAvailableHosts){
-            System.out.println("numberOfNeededHosts > numberOfAvailableHosts - IT'S BAD!");
-            return false;
-
-        }else{
-            System.out.println("numberOfNeededHosts < numberOfAvailableHosts - IT'S OKAY!");
-            return true;
-        }
+        return numberOfNeededHosts;
     }
 }
