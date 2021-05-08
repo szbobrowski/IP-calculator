@@ -54,7 +54,11 @@ public class SubnettingDataGUI extends JFrame {
                     subnetTextPane.setText(IP_Calculator.numbersOfHosts.toString());
                     hostsTextField.setText("");
                 } else {
-                    System.out.println("Something went wrong!");
+                    JFrame frame = new JFrame("WarningGUI");
+                    frame.setContentPane(new WarningGUI().warningPanel);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
                 }
             }
         });
@@ -85,7 +89,6 @@ public class SubnettingDataGUI extends JFrame {
                 if(IP_Calculator.numbersOfHosts.isEmpty()) flag = false;
 
                 if (flag) {
-                    System.out.println("Data correct. Perform submit..");
                     IP_Calculator.setMask(maskText);
                     IP_Calculator.setAddress(address);
 
@@ -96,7 +99,11 @@ public class SubnettingDataGUI extends JFrame {
                     frame.setLocationRelativeTo(null);
 
                 } else {
-                    System.out.println("Some data not correct. Cannot perform submit.");
+                    JFrame frame = new JFrame("WarningGUI");
+                    frame.setContentPane(new WarningGUI().warningPanel);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
                 }
             }
         });

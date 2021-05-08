@@ -78,8 +78,12 @@ public class ConvertingGUI {
                         networkBinaryField.setText("");
                         maskBinaryField.setText("");
                         broadcastBinaryField.setText("");
+                        JFrame frame = new JFrame("WarningGUI");
+                        frame.setContentPane(new WarningGUI().warningPanel);
+                        frame.pack();
+                        frame.setVisible(true);
+                        frame.setLocationRelativeTo(null);
                     } else {
-                        System.out.println("Data correct. Perform submit..");
                         firstHostField.setText(network.firstHostAddress);
                         lastHostField.setText(network.lastHostAddress);
                         broadcastField.setText(network.broadcastAddressDecimal);
@@ -98,6 +102,11 @@ public class ConvertingGUI {
                     networkBinaryField.setText("");
                     maskBinaryField.setText("");
                     broadcastBinaryField.setText("");
+                    JFrame frame = new JFrame("WarningGUI");
+                    frame.setContentPane(new WarningGUI().warningPanel);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
                 }
             }
         });
