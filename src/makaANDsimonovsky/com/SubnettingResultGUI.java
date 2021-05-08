@@ -18,18 +18,6 @@ public class SubnettingResultGUI {
 
     static ArrayList<Integer> numbersOfHostsSorted = new ArrayList<Integer>();
 
-    public static boolean isInteger(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            int d = Integer.parseInt(strNum);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
-
     SubnettingResultGUI() {
         addressField.setText(IP_Calculator.address);
         maskField.setText(Integer.toString(IP_Calculator.mask));
@@ -38,9 +26,9 @@ public class SubnettingResultGUI {
         Network network = new Network(IP_Calculator.address, IP_Calculator.mask);
         System.out.println(IP_Calculator.numbersOfHosts.toString());
 
-        if(!network.ifNetworkIsCorrect()) {
+        if (!network.isNetworkCorrect()) {
             subnetsArea.setText("This is not a valid network address.");
-        } else if (!network.ifNumberOfHostsOkay(IP_Calculator.numbersOfHosts)) {
+        } else if (!network.isNumberOfHostsCorrect(IP_Calculator.numbersOfHosts)) {
             subnetsArea.setText("Not enough available address for such addressing scheme.");
         } else {
             Optimizer optimizer = new Optimizer();
@@ -50,7 +38,8 @@ public class SubnettingResultGUI {
             optimizer.optimize(IP_Calculator.address, IP_Calculator.mask, numbersOfHostsSorted);
 
             int i = 1;
-            for(Network object : optimizer.subnetworkList) {
+            
+            for (Network object : optimizer.subnetworkList) {
                 subnetsArea.append("Subnet nr " + i + ": " + object.networkAddressDecimal + "/" + object.networkMaskNumeral);
                 subnetsArea.append("\n");
                 i++;

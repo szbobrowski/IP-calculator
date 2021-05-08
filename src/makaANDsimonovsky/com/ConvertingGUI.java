@@ -33,11 +33,13 @@ public class ConvertingGUI {
         if (strNum == null) {
             return false;
         }
+
         try {
-            int d = Integer.parseInt(strNum);
+            Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
+
         return true;
     }
 
@@ -67,8 +69,7 @@ public class ConvertingGUI {
 
                 if(flag) {
                     Network network = new Network(address, Integer.parseInt(maskText));
-                    if(!network.ifNetworkIsCorrect()) {
-                        System.out.println("Some data not correct. Cannot perform submit.");
+                    if(!network.isNetworkCorrect()) {
                         firstHostField.setText("");
                         lastHostField.setText("");
                         broadcastField.setText("");
@@ -89,8 +90,6 @@ public class ConvertingGUI {
                         broadcastBinaryField.setText(network.broadcastAddressBinary);
                     }
                 } else {
-                    System.out.println("Some data not correct. Cannot perform submit.");
-                    System.out.println("Some data not correct. Cannot perform submit.");
                     firstHostField.setText("");
                     lastHostField.setText("");
                     broadcastField.setText("");

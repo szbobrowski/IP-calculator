@@ -30,7 +30,7 @@ public class SubnettingDataGUI extends JFrame {
             return false;
         }
         try {
-            int d = Integer.parseInt(strNum);
+            Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }

@@ -7,32 +7,29 @@ public class Optimizer {
 
     protected ArrayList<Network> subnetworkList = new ArrayList<>();
 
-    protected String incrementAddress(String networkAddressDecimal){
+    protected String incrementAddress(String networkAddressDecimal) {
         String[] arrayNetworkAddressString;
         arrayNetworkAddressString = networkAddressDecimal.split("\\.");
-        int[] arrayNetworkAddressInteger = parsingStringArrayToIntArray(arrayNetworkAddressString);
+        int[] arrayNetworkAddressInteger = parseStringArrayToIntArray(arrayNetworkAddressString);
 
-        int index = findingWhichNumberToIncrement(arrayNetworkAddressInteger);
+        int index = findWhichNumberToIncrement(arrayNetworkAddressInteger);
         arrayNetworkAddressInteger[3 - index]++;
         arrayNetworkAddressInteger = insertZeros(index, arrayNetworkAddressInteger);
 
-        arrayNetworkAddressString = parsingIntArrayToStringArray(arrayNetworkAddressInteger, arrayNetworkAddressString);
-        String addressAfterIncrement = String.join(".", arrayNetworkAddressString);
+        arrayNetworkAddressString = parseIntArrayToStringArray(arrayNetworkAddressInteger, arrayNetworkAddressString);
 
-        return addressAfterIncrement;
+        return String.join(".", arrayNetworkAddressString);
     }
 
-    protected void optimize(String networkAddress, Integer networkMaskNumeral, ArrayList<Integer> listOfNeededSubnetworksHosts){
+    protected void optimize(String networkAddress, Integer networkMaskNumeral, ArrayList<Integer> listOfNeededSubnetworksHosts) {
         Network network = new Network(networkAddress, networkMaskNumeral);
-        network.ifNumberOfHostsOkay(listOfNeededSubnetworksHosts);
-
-        //exception, first address of subnetwork is address of network
-        subnetworkList.add(new Network(networkAddress, countingNumeralMask(listOfNeededSubnetworksHosts.get(0))));
+        network.isNumberOfHostsCorrect(listOfNeededSubnetworksHosts);
+        
+        subnetworkList.add(new Network(networkAddress, countNumeralMask(listOfNeededSubnetworksHosts.get(0))));
         String broadcastAddress = subnetworkList.get(0).getBroadcastAddressDecimal();
 
-        for (int i = 1; i < listOfNeededSubnetworksHosts.size(); i++){
-            System.out.println(broadcastAddress);
-            subnetworkList.add(new Network(incrementAddress(broadcastAddress), countingNumeralMask(listOfNeededSubnetworksHosts.get(i))));
+        for (int i = 1; i < listOfNeededSubnetworksHosts.size(); i++) {
+            subnetworkList.add(new Network(incrementAddress(broadcastAddress), countNumeralMask(listOfNeededSubnetworksHosts.get(i))));
             broadcastAddress = subnetworkList.get(i).getBroadcastAddressDecimal();
         }
     }
@@ -44,7 +41,7 @@ public class Optimizer {
         return arrayNetworkAddressInteger;
     }
 
-    protected int findingWhichNumberToIncrement(int[] arrayNetworkAddressInteger){
+    protected int findWhichNumberToIncrement(int[] arrayNetworkAddressInteger) {
         int index = 0;
         while(arrayNetworkAddressInteger[3-index] == 255){
             index++;
@@ -52,7 +49,7 @@ public class Optimizer {
         return index;
     }
 
-    protected int[] parsingStringArrayToIntArray(String[] arrayNetworkAddressString){
+    protected int[] parseStringArrayToIntArray(String[] arrayNetworkAddressString) {
         int[] arrayNetworkAddressInteger = new int[4];
         for (int i = 0; i < arrayNetworkAddressString.length; i++){
             arrayNetworkAddressInteger[i] = Integer.parseInt(arrayNetworkAddressString[i]);
@@ -60,19 +57,20 @@ public class Optimizer {
         return arrayNetworkAddressInteger;
     }
 
-    protected String[] parsingIntArrayToStringArray(int[] arrayNetworkAddressInteger, String[] arrayNetworkAddressString){
+    protected String[] parseIntArrayToStringArray(int[] arrayNetworkAddressInteger, String[] arrayNetworkAddressString) {
         for (int i = 0; i < arrayNetworkAddressString.length; i++){
             arrayNetworkAddressString[i] = Integer.toString(arrayNetworkAddressInteger[i]);
         }
         return arrayNetworkAddressString;
     }
 
-    protected Integer countingNumeralMask(Integer numberOfNeededHosts){
+    protected Integer countNumeralMask(Integer numberOfNeededHosts) {
         int j = 0;
-        while (pow(2,j) - 2 < numberOfNeededHosts){
+
+        while (pow(2,j) - 2 < numberOfNeededHosts) {
             j++;
         }
-        int mask = 32 - j;
-        return mask;
+
+        return 32 - j;
     }
 }

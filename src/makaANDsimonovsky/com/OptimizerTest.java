@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OptimizerTest {
 
-    private Optimizer object;
-    private ArrayList<Integer> arrayListOfNeededSubnetworksHosts;
+    private static Optimizer object;
+    private static ArrayList<Integer> arrayListOfNeededSubnetworksHosts;
 
-    @BeforeEach
-    public void init(){
+    @BeforeAll
+    public static void init(){
 
-        this.arrayListOfNeededSubnetworksHosts = new ArrayList<>();
-        this.object = new Optimizer();
+        arrayListOfNeededSubnetworksHosts = new ArrayList<>();
+        object = new Optimizer();
 
         arrayListOfNeededSubnetworksHosts.add(1000);
         arrayListOfNeededSubnetworksHosts.add(234);
@@ -22,67 +22,68 @@ class OptimizerTest {
         object.optimize("192.168.128.0", 18, arrayListOfNeededSubnetworksHosts);
     }
 
-    @AfterEach
-    public void tearDown() {
-        this.arrayListOfNeededSubnetworksHosts = null;
-        this.object = null;
+    @AfterAll
+    public static void tearDown() {
+        arrayListOfNeededSubnetworksHosts = null;
+        object = null;
     }
 
     @Test
-    public void checkingCountingNumeralMask() {
-        assertEquals(24, object.countingNumeralMask(230));
+    public void testCountingNumeralMask() {
+        assertEquals(24, object.countNumeralMask(230));
     }
 
     @Test
-    public void checkingIncrementAddress() {
+    public void testIncrementAddress() {
         assertEquals("192.168.129.0", object.incrementAddress("192.168.128.255"));
     }
 
     @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class TestMethodOptimize {
 
         private ArrayList<Network> subnetworkList;
 
-        @BeforeEach
+        @BeforeAll
         public void init() {
-            this.subnetworkList = new ArrayList<>();
+            subnetworkList = new ArrayList<>();
             subnetworkList.add(new Network("192.168.128.0", 22));
             subnetworkList.add(new Network("192.168.132.0", 24));
             subnetworkList.add(new Network("192.168.133.0", 24));
         }
 
-        @AfterEach
+        @AfterAll
         public void tearDown() {
-            this.subnetworkList = null;
+            subnetworkList = null;
         }
 
         @Test
-        public void checkingFirstSubnetworkAddress() {
+        public void testFirstSubnetworkAddress() {
             assertEquals(subnetworkList.get(0).getNetworkAddressDecimal(), object.subnetworkList.get(0).getNetworkAddressDecimal());
         }
 
         @Test
-        public void checkingFirstSubnetworkMask() {
+        public void testFirstSubnetworkMask() {
             assertEquals(subnetworkList.get(0).getNetworkMaskNumeral(), object.subnetworkList.get(0).getNetworkMaskNumeral());
         }
 
         @Test
-        public void checkingSecondSubnetworkAddress() {
+        public void testSecondSubnetworkAddress() {
             assertEquals(subnetworkList.get(1).getNetworkAddressDecimal(), object.subnetworkList.get(1).getNetworkAddressDecimal());
         }
 
         @Test
-        public void checkingSecondSubnetworkMask() {
+        public void testSecondSubnetworkMask() {
             assertEquals(subnetworkList.get(1).getNetworkMaskNumeral(), object.subnetworkList.get(1).getNetworkMaskNumeral());
         }
 
         @Test
-        public void checkingThirdSubnetworkAddress() {
+        public void testThirdSubnetworkAddress() {
             assertEquals(subnetworkList.get(2).getNetworkAddressDecimal(), object.subnetworkList.get(2).getNetworkAddressDecimal());
         }
 
         @Test
-        public void checkingThirdSubnetworkMask() {
+        public void testThirdSubnetworkMask() {
             assertEquals(subnetworkList.get(2).getNetworkMaskNumeral(), object.subnetworkList.get(2).getNetworkMaskNumeral());
         }
     }

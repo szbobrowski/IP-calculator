@@ -3,21 +3,22 @@ package makaANDsimonovsky.com;
 import java.util.*;
 
 public class IP_Calculator {
+
     protected static String address = "";
     protected static Integer mask = 0;
-    static ArrayList<Integer> numbersOfHosts = new ArrayList<Integer>();
-
-    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Integer> numbersOfHosts = new ArrayList<>();
 
     public static boolean isInteger(String strNum) {
         if (strNum == null) {
             return false;
         }
+
         try {
-            int d = Integer.parseInt(strNum);
+            Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
+
         return true;
     }
 
