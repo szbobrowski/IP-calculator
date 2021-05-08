@@ -84,10 +84,13 @@ public class ConvertingGUI {
                         frame.setVisible(true);
                         frame.setLocationRelativeTo(null);
                     } else {
+                        String doubleAsString = String.valueOf(network.numberOfAvailableHosts);
+                        int indexOfDecimal = doubleAsString.indexOf(".");
+
                         firstHostField.setText(network.firstHostAddress);
                         lastHostField.setText(network.lastHostAddress);
                         broadcastField.setText(network.broadcastAddressDecimal);
-                        hostsField.setText(Double.toString(network.numberOfAvailableHosts));
+                        hostsField.setText(doubleAsString.substring(0, indexOfDecimal));
                         maskDecimalField.setText(network.networkMaskDecimal);
                         networkBinaryField.setText(network.networkAddressBinary);
                         maskBinaryField.setText(network.networkMaskBinary);
