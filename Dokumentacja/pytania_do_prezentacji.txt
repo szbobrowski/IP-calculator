@@ -1,0 +1,15 @@
+Szymon:
+
+1. Kiedy należy zacząć proces testowania oprogramowania?
+A. Przed rozpoczęciem pisania kodu.
+B. Po zaimplementowaniu kilku pierwszych funkcjonalności.
+C. W końcowej fazie tworzenia aplikacji.
+D. Dopiero po napisaniu całego projektu.
+
+2. Jaki jest pierwszy krok w metodzie TDD?
+
+3. Czy tester powinien posiadać przynajmniej podstawową wiedzę z
+zakresu technologii zastosowanych w projekcie? TAK/NIE
+
+4. Na jakie pytanie odpowiadają testy funkcjonalne, a na jakie pytanie
+odpowiadają testy niefunkcjonalne?
