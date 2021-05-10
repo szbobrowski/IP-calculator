@@ -24,7 +24,6 @@ public class SubnettingResultGUI {
         subnetsField.setText(Integer.toString(IP_Calculator.numbersOfHosts.size()));
 
         Network network = new Network(IP_Calculator.address, IP_Calculator.mask);
-        System.out.println(IP_Calculator.numbersOfHosts.toString());
 
         if (!network.isNetworkCorrect()) {
             subnetsArea.setText("This is not a valid network address.");

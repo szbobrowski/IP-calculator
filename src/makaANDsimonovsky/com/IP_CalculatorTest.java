@@ -1,25 +1,12 @@
 package makaANDsimonovsky.com;
 
 import org.junit.jupiter.api.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class IP_CalculatorTest {
 
     @Test
-    public void testLowestPossibleMask() {
-        assertTrue(IP_Calculator.isMaskCorrect("1"));
-    }
-
-    @Test
-    public void testGreatestPossibleMask() {
-        assertTrue(IP_Calculator.isMaskCorrect("31"));
-    }
-
-    @Test
-    public void testLowestNotAllowedMask() {
-        assertFalse(IP_Calculator.isMaskCorrect("32"));
-    }
+    public void testLowestPossibleMask() { assertTrue(IP_Calculator.isMaskCorrect("1")); }
 
     @Test
     public void testNegativeMask() {
@@ -40,6 +27,18 @@ class IP_CalculatorTest {
     public void testMinimumAllowedAddress() {
         assertTrue(IP_Calculator.isAddressCorrect("0.0.0.0"));
     }
+
+    @Test
+    public void testLowestNotAllowedMask() {
+        assertFalse(IP_Calculator.isMaskCorrect("32"));
+    }
+
+    @Test
+    public void testGreatestPossibleMask() {
+        assertTrue(IP_Calculator.isMaskCorrect("31"));
+    }
+
+
 
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)

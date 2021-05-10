@@ -1,0 +1,33 @@
+Zad 2
+Utwórz klasę testującą dla klasy IP_Calculator (w trakcie prezentacji zostanie pokazane jak to zrobić).
+Wzorując się na slajdzie nr ... stwórz dwa własne testy dla metody isAddressCorrect. 
+Jeden z testów powinien wykorzystywać asercję assertTrue, a drugi assertFalse.
+Przykładowy poprawny adres: 192.168.1.0
+Przykładowy niepoprawny adres: 123..0.8
+W odpowiedzi umieść plik tekstowy zawierający oba testy (nie trzeba wysyłać całej klasy).
+
+Zad 3
+Utwórz klasę testującą dla klasy Network. Wzorując się na slajdzie ... :
+- Zadeklaruj obiekt klasy Network.
+- Utwórz pole @BeforeAll i zainicjalizuj tam wcześniej stworzony obiekt klasy Network.
+- Utwórz pole @AfterAll, w którym wyczyścisz pamięć po obiekcie klasy Network.
+- Napisz dwa własne testy dla metody getNetworkMaskDecimal() wywoływanej na utworzonym
+przez Ciebie obiekcie klasy Network. Jeden z testów powinien wykorzystywać asercję assertEquals, a 
+drugi assertNotEquals.
+Przykładowa poprawna zamiana maski: 20 -> 255.255.240.0
+Przykładowa błędna zamiana maski: 24 -> 192.192.0.0
+W odpowiedzi umieść plik (z rozszerzeniem .java) zawierający stworzoną przez Ciebie klasę.
+
+Zad 4
+Wzorując się na slajdzie ... utwórz pole @Nested (w stworzonej w zadaniu trzecim klasie testowej
+klasy Network). Analogicznie:
+- Utwórz obiekt klasy ArrayList
+- Utwórz pole @BeforeAll i dodaj kilka podsieci (list.add(int)) o różnych liczbach hostów.
+- Utwórz pole @AfterAll, w którym wyczyścisz pamięć po obiekcie klasy ArrayList.
+- Przetestuj metodę klasy Network isNumberOfHostsCorrect(). Jeśli liczba dostępnych w 
+uwtorzonej przez ciebie sieci adresów jest wystarczająca wykorzystaj metodę assertTrue
+(tak jak na slajdzie). W przeciwnym razie powinieneś wykorzystać metodę assertFalse.
+W odpowiedzi umieść plik (z rozszerzeniem .java) zawierający stworzoną przez Ciebie klasę.
+
+
+
