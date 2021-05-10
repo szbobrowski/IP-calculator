@@ -21,6 +21,8 @@ W odpowiedzi umieść plik (z rozszerzeniem .java) zawierający stworzoną przez
 Zad 4
 Wzorując się na slajdzie ... utwórz pole @Nested (w stworzonej w zadaniu trzecim klasie testowej
 klasy Network). Analogicznie:
+- Dodaj linijkę @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+- Utwórz nową klasę dla testowania specifycznego zachowania programu.
 - Utwórz obiekt klasy ArrayList
 - Utwórz pole @BeforeAll i dodaj kilka podsieci (list.add(int)) o różnych liczbach hostów.
 - Utwórz pole @AfterAll, w którym wyczyścisz pamięć po obiekcie klasy ArrayList.
