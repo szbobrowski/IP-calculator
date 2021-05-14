@@ -7,6 +7,9 @@ D. Dopiero po napisaniu całego projektu.
 2. W której technice testowania (białoskrzynkowej czy czarnoskrzynkowej) należy znać strukturę programu?
 
 3. Jaki jest pierwszy krok w metodzie TDD?
+A. Napisz test dla nowej, jeszcze niezaimplementowanej funkcjonalności.
+B. Dokonaj refaktoryzacji kodu.
+C. Upewnij się, że wszystkie poprzednie testy przechodzą.
 
 4. Model kaskadowy:
 A. Pozwala na wykrycie problemów projektowych we wczesnej fazie produkcji.
@@ -23,5 +26,7 @@ A. Wykazują czy kojarzone wzajemnie elementy realizują założony proces bizne
 B. Odnoszą się do aplikacji w ujęciu całościowym.
 C. Pozwalają na wyeliminowanie problemów w fazie implementacji.
 
-8. Na jakie pytanie odpowiadają testy funkcjonalne, a na jakie pytanie
-odpowiadają testy niefunkcjonalne?
+8. Na jakie pytanie odpowiadają testy niefunkcjonalne?
+A. co robi system?
+B. jak działa system?
+C. czy nowe funkcjonalności nie wpłynęły na poprzednio napisany kod?
