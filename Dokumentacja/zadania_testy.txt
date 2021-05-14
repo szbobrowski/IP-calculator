@@ -1,5 +1,5 @@
 Zad 1
-Rozwiązać test wiedzy zawarty w pliku pytania.txt. Jako odpowiedź należy przesłać plik tekstowy 
+Rozwiązać test wiedzy zawarty w pliku pytania_do_prezentacji.txt. Jako odpowiedź należy przesłać plik tekstowy 
 podpisany odpowiedzi.txt. Odpowiedzi powinny być krótkie i zwięzłe.
 
 Zad 2
