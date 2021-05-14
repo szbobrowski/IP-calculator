@@ -1,3 +1,7 @@
+Zad 1
+Rozwiązać test wiedzy zawarty w pliku pytania.txt. Jako odpowiedź należy przesłać plik tekstowy 
+podpisany odpowiedzi.txt. Odpowiedzi powinny być krótkie i zwięzłe.
+
 Zad 2
 Utwórz klasę testującą dla klasy IP_Calculator (w trakcie prezentacji zostanie pokazane jak to zrobić).
 Wzorując się na slajdzie nr ... stwórz dwa własne testy dla metody isAddressCorrect. 
