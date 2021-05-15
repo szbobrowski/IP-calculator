@@ -1,0 +1,13 @@
+1. A. Przed rozpoczęciem pisania kodu.
+
+2. B. Technika białoskrzynkowa.
+
+3. A. Napisz test dla nowej, jeszcze niezaimplementowanej funkcjonalności.
+
+4. C. Włącza testy w bardzo późnej fazie produkcji.
+
+5. TAK
+
+6. C. Pozwalają na wyeliminowanie problemów w fazie implementacji.
+
+7. B. jak działa system?
