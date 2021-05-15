@@ -4,7 +4,9 @@ B. Po zaimplementowaniu kilku pierwszych funkcjonalności.
 C. W końcowej fazie tworzenia aplikacji.
 D. Dopiero po napisaniu całego projektu.
 
-2. W której technice testowania (białoskrzynkowej czy czarnoskrzynkowej) należy znać strukturę programu?
+2. W której technice testowania należy znać strukturę programu?
+A. Technika czarnoskrzynkowa.
+B. Technika białoskrzynkowa.
 
 3. Jaki jest pierwszy krok w metodzie TDD?
 A. Napisz test dla nowej, jeszcze niezaimplementowanej funkcjonalności.
@@ -19,14 +21,12 @@ C. Włącza testy w bardzo późnej fazie produkcji.
 5. Czy tester powinien posiadać przynajmniej podstawową wiedzę z
 zakresu technologii zastosowanych w projekcie? TAK/NIE
 
-6. Co jest elementarną zasadą procesu eliminacji wady aplikacji?
-
-7.Testy modułowe:
+6.Testy modułowe:
 A. Wykazują czy kojarzone wzajemnie elementy realizują założony proces biznesowy.
 B. Odnoszą się do aplikacji w ujęciu całościowym.
 C. Pozwalają na wyeliminowanie problemów w fazie implementacji.
 
-8. Na jakie pytanie odpowiadają testy niefunkcjonalne?
+7. Na jakie pytanie odpowiadają testy niefunkcjonalne?
 A. co robi system?
 B. jak działa system?
 C. czy nowe funkcjonalności nie wpłynęły na poprzednio napisany kod?
